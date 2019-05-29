@@ -1,0 +1,15 @@
+name: pgadmin
+version: dev
+appVersion: dev
+description: pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.
+keywords:
+  - pgadmin
+  - postgres
+  - database
+  - sql
+home: https://www.pgadmin.org/
+icon: https://wiki.postgresql.org/images/3/30/PostgreSQL_logo.3colors.120x120.png
+source:
+  - https://github.com/cetic/helm-chart
+maintainers:
+  - name: alexnuttinck
