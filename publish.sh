@@ -8,6 +8,10 @@ WORKING_DIRECTORY="$PWD"
   echo "ERROR: Environment variable GITHUB_PAGES_REPO is required"
   exit 1
 }
+[ "$HELM_CHART" ] || {
+  echo "ERROR: Environment variable HELM_CHART is required"
+  exit 1
+}
 [ -z "$GITHUB_PAGES_BRANCH" ] && GITHUB_PAGES_BRANCH=gh-pages
 [ -z "$HELM_CHARTS_SOURCE" ] && HELM_CHARTS_SOURCE="$WORKING_DIRECTORY"
 [ -d "$HELM_CHARTS_SOURCE" ] || {
@@ -25,6 +29,21 @@ echo "GITHUB_PAGES_BRANCH=$GITHUB_PAGES_BRANCH"
 echo "HELM_CHARTS_SOURCE=$HELM_CHARTS_SOURCE"
 echo "HELM_VERSION=$HELM_VERSION"
 echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
+
+mkdir $HELM_CHARTS_SOURCE/$HELM_CHART/
+
+[ -z "$HELM_CHARTS_SOURCE" ] && HELM_CHARTS_SOURCE="$WORKING_DIRECTORY/$HELM_CHART/"
+
+find $WORKING_DIRECTORY -type f -exec mv --backup=numbered -t $HELM_CHARTS_SOURCE {} +
+
+echo '>> ls -a...'
+ls -a
+
+echo ">> ls -a... $WORKING_DIRECTORY"
+ls -a $WORKING_DIRECTORY
+
+echo ">> ls -a... $HELM_CHARTS_SOURCE"
+ls -a $HELM_CHARTS_SOURCE
 
 echo '>> Prepare...'
 mkdir -p /tmp/helm/bin
@@ -49,9 +68,8 @@ git clone -b "$GITHUB_PAGES_BRANCH" "git@github.com:$GITHUB_PAGES_REPO.git" .
 
 echo '>> Building charts...'
 find "$HELM_CHARTS_SOURCE" -mindepth 1 -maxdepth 1 -type d | while read chart; do
-  echo ">>> helm lint ."
-  ls -a
-  helm lint .
+  echo ">>> helm lint $chart"
+  helm lint "$chart"
   chart_name="`basename "$chart"`"
   echo ">>> helm package -d $chart_name $chart"
   mkdir -p "$chart_name"
