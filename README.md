@@ -17,7 +17,8 @@ This [Helm](https://github.com/kubernetes/helm) chart installs [pgAdmin](https:/
 ### Add Helm repository
 
 ```bash
-helm repo add pgadmin https://helm.pgadmin.io
+helm repo add cetic https://cetic.github.io/helm-charts
+helm repo update
 ```
 
 ### Configure the chart
@@ -41,7 +42,7 @@ The following items can be set via `--set` flag during installation or configure
 Install the pgAdmin helm chart with a release name `my-release`:
 
 ```bash
-helm install --name my-release cetic/pgadmin
+helm install --name my-release helm install cetic/helm-pgadmin
 ```
 
 ## Uninstallation
@@ -79,6 +80,7 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | **Ingress**                                                                 |
 | `ingress.enabled`                                                           | Enables Ingress                                                                                                    | `false`                         |
 | `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
+
 ## Credits
 
 Initially inspired from https://github.com/jjcollinge/pgadmin-chart
@@ -86,6 +88,3 @@ Initially inspired from https://github.com/jjcollinge/pgadmin-chart
 ## License
 
 [Apache License 2.0](/LICENSE.md)
-
-
-

@@ -1,7 +1,7 @@
 name: pgadmin
-version: dev
-appVersion: dev
-description: pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.
+version: 0.1.0
+appVersion: 4.7.0
+description: pgAdmin is a web based administration tool for the PostgreSQL database. 
 keywords:
   - pgadmin
   - postgres
