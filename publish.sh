@@ -32,13 +32,19 @@ echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
 
 mkdir $HELM_CHARTS_SOURCE/
 
-find $WORKING_DIRECTORY -type f -exec mv -t $HELM_CHARTS_SOURCE/ {} +
-
 echo '>> ls -a...'
 ls -a
 
 echo ">> ls -a... $WORKING_DIRECTORY"
 ls -a $WORKING_DIRECTORY
+
+mv $WORKING_DIRECTORY/Chart.yaml $HELM_CHARTS_SOURCE/Chart.yaml
+mv $WORKING_DIRECTORY/.helmignore $HELM_CHARTS_SOURCE/.helmignore
+mv $WORKING_DIRECTORY/LICENCE.md $HELM_CHARTS_SOURCE/values.yaml
+mv $WORKING_DIRECTORY/values.yaml $HELM_CHARTS_SOURCE/values.yaml
+mv $WORKING_DIRECTORY/templates $HELM_CHARTS_SOURCE/templates
+
+find $WORKING_DIRECTORY -type f -exec mv -t $HELM_CHARTS_SOURCE/ {} +
 
 echo ">> ls -a... $HELM_CHARTS_SOURCE"
 ls -a $HELM_CHARTS_SOURCE
