@@ -1,5 +1,7 @@
 # Helm Chart for pgAdmin
 
+[![CircleCI](https://circleci.com/gh/cetic/helm-pgadmin.svg?style=shield)](https://circleci.com/gh/cetic/helm-pgadmin)
+
 ## Introduction
 
 This [Helm](https://github.com/kubernetes/helm) chart installs [pgAdmin](https://github.com/postgres/pgadmin4) in a Kubernetes cluster.
