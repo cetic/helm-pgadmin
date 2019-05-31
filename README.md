@@ -9,7 +9,7 @@ This [Helm](https://github.com/kubernetes/helm) chart installs [pgAdmin](https:/
 - Kubernetes cluster 1.10+
 - Helm 2.8.0+
 - PV provisioner support in the underlying infrastructure.
-- [postgresql](https://github.com/kubernetes/charts/tree/master/stable/postgresql) instance deployed.
+- A [postgresql](https://github.com/kubernetes/charts/tree/master/stable/postgresql) instance deployed.
 - TLS support requires the [cert-manager](https://github.com/jetstack/cert-manager) Kubernetes add-on to be deployed into your cluster.
 
 ## Installation
@@ -56,13 +56,29 @@ helm delete --purge my-release
 
 The following table lists the configurable parameters of the pgAdmin chart and the default values.
 
-| Parameter                                                                   | Description                                                                                                                                                                                                                                                                                                                                     | Default                         |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| Parameter                                                                   | Description                                                                                                        | Default                         |
+| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------| ------------------------------- |
+| **Image**                                                                   |
+| `image.repository`                                                          | pgAdmin Image name                                                                                                 | `dpage/pgadmin4`                |
+| `image.tag`                                                                 | pgAdmin Image tag                                                                                                  | `4.7`                           |
+| `image.pullPolicy`                                                          | pgAdmin Image pull policy                                                                                          | `IfNotPresent`                  |
+| **PgAdmin**                                                                 |
+| `pgadmin.username`                                                          | pgAdmin admin user                                                                                                 | `pgadmin4@pgadmin.org`          |
+| `pgadmin.paasword`                                                          | pgAdmin admin password                                                                                             | `admin`                         |
 | **Persistence**                                                             |
-| `persistence.enabled`                                                       | Enable the data persistence or not                                                                                                                                                                                                                                                                                                              | `true`                          |
-| `persistence.accessMode`                     | The access mode of the volume.                                                                                                                                                                                                                                                        | `ReadWriteOnce`                 |
-| `persistence.size`                           | The size of the volume.                                                                                                                                                                                                                                                               | `4Gi`                           |
-
+| `persistence.enabled`                                                       | Enable the data persistence or not                                                                                 | `true`                          |
+| `persistence.existingClaim`                                                 | Provide an existing PersistentVolumeClaim, the value is evaluated as a template.                                   | `nil`                           |
+| `persistence.storageClass`                                                  | PVC Storage Class for PostgreSQL volume.                                                                           | `nil`                           |
+| `persistence.accessMode`                                                    | The access mode of the volume.                                                                                     | `ReadWriteOnce`                 |
+| `persistence.size`                                                          | The size of the volume.                                                                                            | `4Gi`                           |
+| **Service**                                                                 |
+| `service.type`                                                              |  Type of service for pgAdmin frontend                                                                              | `LoadBalancer`                  |
+| `service.port`                                                              | Port to expose service                                                                                             | `80`                            |
+| `service.loadBalancerIP`                                                    | LoadBalancerIP if service type is `LoadBalancer`                                                                   | `nil`                           |
+| `service.loadBalancerSourceRanges`                                          | Address that are allowed when svc is `LoadBalancer`                                                                | []                              |
+| **Ingress**                                                                 |
+| `ingress.enabled`                                                           | Enables Ingress                                                                                                    | `false`                         |
+| `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
 ## Credits
 
 Initially inspired from https://github.com/jjcollinge/pgadmin-chart
