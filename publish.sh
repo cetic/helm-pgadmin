@@ -14,8 +14,8 @@ WORKING_DIRECTORY="$PWD"
 }
 [ -z "$GITHUB_PAGES_BRANCH" ] && GITHUB_PAGES_BRANCH=gh-pages
 [ -z "$HELM_CHARTS_SOURCE" ] && HELM_CHARTS_SOURCE="$WORKING_DIRECTORY/$HELM_CHART"
-[ -d "$HELM_CHARTS_SOURCE" ] || {
-  echo "ERROR: Could not find Helm charts in $HELM_CHARTS_SOURCE"
+[ -d "$WORKING_DIRECTORY" ] || {
+  echo "ERROR: Could not find Helm charts in $WORKING_DIRECTORY"
   exit 1
 }
 [ -z "$HELM_VERSION" ] && HELM_VERSION=2.8.1
