@@ -8,7 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   template:
     metadata:
       labels:
@@ -20,18 +20,23 @@ spec:
           image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          - name: DEFAULT_USER
+          - name: PGADMIN_DEFAULT_EMAIL
             value: {{ .Values.pgadmin.username }}
-          - name: DEFAULT_PASSWORD
+          - name: PGADMIN_DEFAULT_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: {{ template "fullname" . }}
                 key: pgadmin-password
           ports:
-            - containerPort: {{ .Values.service.internalPort }}
+          - name: http
+            containerPort: 80
+            protocol: TCP
+          - name: https
+            containerPort: 443
+            protocol: TCP
           volumeMounts:
           - name: pgadmin-data
-            mountPath: /var/lib/pgadmin4
+            mountPath: /var/lib/pgadmin
           resources:
 {{ toYaml .Values.resources | indent 12 }}
       volumes:

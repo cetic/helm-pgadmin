@@ -1,15 +1,15 @@
-replicaCount: 1
-
 ## Set default image, imageTag, and imagePullPolicy. mode is used to indicate the
 ##
 image:
-  repository: fenglc/pgadmin4
-  tag:
+  repository: dpage/pgadmin4
+  tag: 4.7
   pullPolicy: IfNotPresent
-
+ 
 pgadmin:
+## pgadmin admin user
   username: pgadmin4@pgadmin.org
-  #password: admin
+## pgadmin admin password
+  password: admin
 
 resources: {}
 
@@ -46,8 +46,18 @@ persistence:
 service:
   name: pgadmin
   type: LoadBalancer
-  externalPort: 5050
-  internalPort: 5050
+  port: 80
+
+  ## Set the LoadBalancer service type to internal only.
+  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
+  ##
+  # loadBalancerIP:
+
+  ## Load Balancer sources
+  ## https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
+  ##
+  # loadBalancerSourceRanges:
+  # - 10.10.10.0/24
 
 ## Configure Ingress based on the documentation here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
