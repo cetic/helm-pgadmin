@@ -30,22 +30,15 @@ echo "HELM_CHARTS_SOURCE=$HELM_CHARTS_SOURCE"
 echo "HELM_VERSION=$HELM_VERSION"
 echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
 
+echo ">>> Create Chart Directory"
+
 mkdir $HELM_CHARTS_SOURCE/
-
-echo '>> ls -a...'
-ls -a
-
-echo ">> ls -a... $WORKING_DIRECTORY"
-ls -a $WORKING_DIRECTORY
 
 mv $WORKING_DIRECTORY/Chart.yaml $HELM_CHARTS_SOURCE/Chart.yaml
 mv $WORKING_DIRECTORY/.helmignore $HELM_CHARTS_SOURCE/.helmignore
 mv $WORKING_DIRECTORY/LICENSE.md $HELM_CHARTS_SOURCE/LICENSE.md
 mv $WORKING_DIRECTORY/values.yaml $HELM_CHARTS_SOURCE/values.yaml
 mv $WORKING_DIRECTORY/templates $HELM_CHARTS_SOURCE/templates
-
-echo ">> ls -a... $HELM_CHARTS_SOURCE"
-ls -a $HELM_CHARTS_SOURCE
 
 echo '>> Prepare...'
 mkdir -p /tmp/helm/bin

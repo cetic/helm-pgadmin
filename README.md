@@ -11,8 +11,6 @@ This [Helm](https://github.com/kubernetes/helm) chart installs [pgAdmin](https:/
 - Kubernetes cluster 1.10+
 - Helm 2.8.0+
 - PV provisioner support in the underlying infrastructure.
-- A [postgresql](https://github.com/kubernetes/charts/tree/master/stable/postgresql) instance deployed.
-- TLS support requires the [cert-manager](https://github.com/jetstack/cert-manager) Kubernetes add-on to be deployed into your cluster.
 
 ## Installation
 
