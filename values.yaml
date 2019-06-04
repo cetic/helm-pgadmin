@@ -10,8 +10,7 @@ pgadmin:
   username: pgadmin4@pgadmin.org
 ## pgadmin admin password
   password: admin
-
-resources: {}
+  tls: false
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
@@ -47,6 +46,8 @@ service:
   name: pgadmin
   type: LoadBalancer
   port: 80
+  tlsport: 443
+  annotations: {}
 
   ## Set the LoadBalancer service type to internal only.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
@@ -70,11 +71,7 @@ ingress:
     clusterIssuer: letsencrypt-staging
     externalDNSName: pgadmin.example.com
 
-## TODO
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
-#resources:
-#  requests:
-#    memory: 256Mi
-#    cpu: 250m
+resources: {}

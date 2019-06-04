@@ -27,6 +27,10 @@ spec:
               secretKeyRef:
                 name: {{ template "fullname" . }}
                 key: pgadmin-password
+         {{- if .Values.pgadmin.tls }}
+          - name: PGADMIN_ENABLE_TLS
+            value: {{ .Values.pgadmin.tls | quote }}
+         {{- end }}
           ports:
           - name: http
             containerPort: 80
@@ -37,16 +41,38 @@ spec:
           volumeMounts:
           - name: pgadmin-data
             mountPath: /var/lib/pgadmin
+         {{- if .Values.pgadmin.tls }}
+          - name: tls-cert
+            mountPath: /certs/server.cert
+            subPath: server.cert
+          - name: tls-private-key
+            mountPath: /certs/server.key
+            subPath: server.key
+         {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
       volumes:
         - name: pgadmin-data
-        {{- if .Values.persistence.enabled }}
+         {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
             claimName: {{ template "fullname" . }}
-        {{- else }}
+         {{- else }}
           emptyDir: {}
-        {{- end }}
+         {{- end }}
+         {{- if .Values.pgadmin.tls }}
+        - name: tls-private-key
+          secret:
+            secretName: {{ template "fullname" . }}
+            items:
+              - key: server.key
+                path: server.key
+        - name: tls-cert
+          secret:
+            secretName: {{ template "fullname" . }}
+            items:
+              - key: server.cert
+                path: server.cert
+         {{- end }}
     {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
