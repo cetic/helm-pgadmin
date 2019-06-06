@@ -51,6 +51,10 @@ spec:
          {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          livenessProbe:
+{{ toYaml .Values.livenessProbe | indent 12 }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe | indent 12 }}
       volumes:
         - name: pgadmin-data
          {{- if .Values.persistence.enabled }}

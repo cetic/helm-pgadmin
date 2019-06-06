@@ -2,7 +2,7 @@
 ##
 image:
   repository: dpage/pgadmin4
-  tag: 4.7
+  tag: 4.8
   pullPolicy: IfNotPresent
  
 pgadmin:
@@ -71,7 +71,35 @@ ingress:
     clusterIssuer: letsencrypt-staging
     externalDNSName: pgadmin.example.com
 
+## Configure liveness and readiness probes
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+##
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 60
+  periodSeconds: 15
+  timeoutSeconds: 10
+livenessProbe:
+   httpGet:
+     path: /
+     port: http
+   initialDelaySeconds: 60
+   periodSeconds: 30
+   timeoutSeconds: 10
+
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
 resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
