@@ -7,6 +7,10 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+{{- if .Values.service.annotations }}
+  annotations:
+{{ toYaml .Values.service.annotations | indent 4 }}
+{{- end }}
 spec:
   type: {{ .Values.service.type }}
   {{- if and .Values.service.loadBalancerIP (eq .Values.service.type "LoadBalancer") }}
@@ -23,6 +27,12 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+   {{- if .Values.pgadmin.tls }}
+    - port: {{ .Values.service.tlsport }}
+      targetPort: https
+      protocol: TCP
+      name: https
+   {{- end }}
   selector:
     app: {{ template "name" . }}
     release: {{ .Release.Name }}
