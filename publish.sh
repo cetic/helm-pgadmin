@@ -34,8 +34,7 @@ echo ">>> Create Chart Directory"
 
 mkdir $HELM_CHARTS_SOURCE/
 
-find . -maxdepth 1 | grep -v $HELM_CHART| xargs -i mv {} ./$HELM_CHART
-mv $WORKING_DIRECTORY/.helmignore $HELM_CHARTS_SOURCE/.helmignore
+cp -r `ls -1 | grep -v $HELM_CHART` /$HELM_CHART
 
 echo '>> Prepare...'
 mkdir -p /tmp/helm/bin
