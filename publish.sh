@@ -34,11 +34,7 @@ echo ">>> Create Chart Directory"
 
 mkdir $HELM_CHARTS_SOURCE/
 
-mv $WORKING_DIRECTORY/Chart.yaml $HELM_CHARTS_SOURCE/Chart.yaml
-mv $WORKING_DIRECTORY/.helmignore $HELM_CHARTS_SOURCE/.helmignore
-mv $WORKING_DIRECTORY/LICENSE.md $HELM_CHARTS_SOURCE/LICENSE.md
-mv $WORKING_DIRECTORY/values.yaml $HELM_CHARTS_SOURCE/values.yaml
-mv $WORKING_DIRECTORY/templates $HELM_CHARTS_SOURCE/templates
+cp -r `ls -1 | grep -v $HELM_CHART` /$HELM_CHART
 
 echo '>> Prepare...'
 mkdir -p /tmp/helm/bin
