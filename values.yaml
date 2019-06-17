@@ -6,9 +6,9 @@ image:
   pullPolicy: IfNotPresent
  
 pgadmin:
-## pgadmin admin user
+  ## pgadmin admin user
   username: pgadmin4@pgadmin.org
-## pgadmin admin password
+  ## pgadmin admin password
   password: admin
   tls: false
 
@@ -62,14 +62,17 @@ service:
 
 ## Configure Ingress based on the documentation here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
-
 ingress:
   enabled: false
-  staticIPReservation: pgadmin-static-ip
-  tls:
-    enabled: false
-    clusterIssuer: letsencrypt-staging
-    externalDNSName: pgadmin.example.com
+  annotations: {}
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+  path: /
+  ## Ingress Host
+  # host:
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 ## Configure liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
