@@ -1,3 +1,4 @@
+---
 ## Set default image, imageTag, and imagePullPolicy. mode is used to indicate the
 ##
 image:
@@ -41,7 +42,6 @@ persistence:
 ## or access it from within the cluster (ClusterIP service). Set the service type and the port to serve it.
 ## ref: http://kubernetes.io/docs/user-guide/services/
 ##
-
 service:
   name: pgadmin
   type: LoadBalancer
