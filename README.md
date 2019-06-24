@@ -80,15 +80,18 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | `service.loadBalancerIP`                                                    | LoadBalancerIP if service type is `LoadBalancer`                                                                   | `nil`                           |
 | `service.loadBalancerSourceRanges`                                          | Address that are allowed when svc is `LoadBalancer`                                                                | `[]`                            |
 | `service.annotations`                                                       | Service annotations                                                                                                | `{}`                            |
+| **Ingress**                                                                 |
+| `ingress.enabled`                                                           | Enables Ingress                                                                                                    | `false`                         |
+| `ingress.annotations`                                                       | Ingress annotations                                                                                                | `{}`                            |
+| `ingress.path`                                                              | Path to access frontend                                                                                            | `/`                             |
+| `ingress.host`                                                              | Ingress host                                                                                                       | `nil`                           |
+| `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
 | **ReadinessProbe**                                                          |
 | `readinessProbe`                                                            | Rediness Probe settings                                                                                            | `{ "httpGet": { "path": "/", "port": http } "initialDelaySeconds": 60, "periodSeconds": 15, "timeoutSeconds": 10 }`|
 | **LivenessProbe**                                                           |
-| `livenessProbe`                                                             | Liveness Probe settings                                                                                            | `{ "httpGet": { "path": "/", "port": http } "initialDelaySeconds": 60, "periodSeconds": 30, "timeoutSeconds": 10 }` |
+| `livenessProbe`                                                             | Liveness Probe settings                                                                                            | `{ "httpGet": { "path": "/", "port": http } "initialDelaySeconds": 60, "periodSeconds": 30, "timeoutSeconds": 10 }`|
 | **Resources**                                                               |
 | `resources`                                                                 | CPU/Memory resource requests/limits                                                                                | `{}`                            |
-| **Ingress**                                                                 |
-| `ingress.enabled`                                                           | Enables Ingress                                                                                                    | `false`                         |
-| `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
 
 ## Credits
 
