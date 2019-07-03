@@ -1,6 +1,6 @@
 # Helm Chart for pgAdmin
 
-[![CircleCI](https://circleci.com/gh/cetic/helm-pgadmin.svg?style=shield)](https://circleci.com/gh/cetic/helm-pgadmin/tree/master)
+[![CircleCI](https://circleci.com/gh/cetic/helm-pgadmin.svg?style=svg)](https://circleci.com/gh/cetic/helm-pgadmin/tree/master) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![version](https://img.shields.io/github/tag/cetic/helm-pgadmin.svg?label=release)
 
 ## Introduction
 
