@@ -1,6 +1,6 @@
 # Helm Chart for pgAdmin
 
-[![CircleCI](https://circleci.com/gh/cetic/helm-pgadmin.svg?style=shield)](https://circleci.com/gh/cetic/helm-pgadmin/tree/master)
+[![CircleCI](https://circleci.com/gh/cetic/helm-pgadmin.svg?style=svg)](https://circleci.com/gh/cetic/helm-pgadmin/tree/master) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![version](https://img.shields.io/github/tag/cetic/helm-pgadmin.svg?label=release)
 
 ## Introduction
 
@@ -61,7 +61,7 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------| ------------------------------- |
 | **Image**                                                                   |
 | `image.repository`                                                          | pgAdmin Image name                                                                                                 | `dpage/pgadmin4`                |
-| `image.tag`                                                                 | pgAdmin Image tag                                                                                                  | `4.8`                           |
+| `image.tag`                                                                 | pgAdmin Image tag                                                                                                  | `4.10`                          |
 | `image.pullPolicy`                                                          | pgAdmin Image pull policy                                                                                          | `IfNotPresent`                  |
 | **PgAdmin**                                                                 |
 | `pgadmin.username`                                                          | pgAdmin admin user                                                                                                 | `pgadmin4@pgadmin.org`          |
@@ -84,7 +84,7 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | `ingress.enabled`                                                           | Enables Ingress                                                                                                    | `false`                         |
 | `ingress.annotations`                                                       | Ingress annotations                                                                                                | `{}`                            |
 | `ingress.path`                                                              | Path to access frontend                                                                                            | `/`                             |
-| `ingress.host`                                                              | Ingress host                                                                                                       | `nil`                           |
+| `ingress.hosts`                                                             | Ingress hosts                                                                                                      | `[]`                            |
 | `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
 | **ReadinessProbe**                                                          |
 | `readinessProbe`                                                            | Rediness Probe settings                                                                                            | `{ "httpGet": { "path": "/", "port": http } "initialDelaySeconds": 60, "periodSeconds": 15, "timeoutSeconds": 10 }`|

@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "fullname" . }}
+  name: {{ template "pgadmin.fullname" . }}
   labels:
-    app: {{ template "name" . }}
+    app: {{ template "pgadmin.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "name" . }}
+        app: {{ template "pgadmin.name" . }}
         release: {{ .Release.Name }}
     spec:
       containers:
@@ -25,7 +25,7 @@ spec:
           - name: PGADMIN_DEFAULT_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ template "fullname" . }}
+                name: {{ template "pgadmin.fullname" . }}
                 key: pgadmin-password
          {{- if .Values.pgadmin.tls }}
           - name: PGADMIN_ENABLE_TLS
@@ -59,20 +59,20 @@ spec:
         - name: pgadmin-data
          {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ template "fullname" . }}
+            claimName: {{ template "pgadmin.fullname" . }}
          {{- else }}
           emptyDir: {}
          {{- end }}
          {{- if .Values.pgadmin.tls }}
         - name: tls-private-key
           secret:
-            secretName: {{ template "fullname" . }}
+            secretName: {{ template "pgadmin.fullname" . }}
             items:
               - key: server.key
                 path: server.key
         - name: tls-cert
           secret:
-            secretName: {{ template "fullname" . }}
+            secretName: {{ template "pgadmin.fullname" . }}
             items:
               - key: server.cert
                 path: server.cert
