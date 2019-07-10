@@ -3,7 +3,7 @@
 ##
 image:
   repository: dpage/pgadmin4
-  tag: 4.8
+  tag: 4.10
   pullPolicy: IfNotPresent
  
 pgadmin:
@@ -65,14 +65,9 @@ service:
 ingress:
   enabled: false
   annotations: {}
-    # nginx.ingress.kubernetes.io/rewrite-target: /
   path: /
-  ## Ingress Host
-  # host:
+  hosts: []
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 ## Configure liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/

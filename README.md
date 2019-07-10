@@ -61,7 +61,7 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------| ------------------------------- |
 | **Image**                                                                   |
 | `image.repository`                                                          | pgAdmin Image name                                                                                                 | `dpage/pgadmin4`                |
-| `image.tag`                                                                 | pgAdmin Image tag                                                                                                  | `4.8`                           |
+| `image.tag`                                                                 | pgAdmin Image tag                                                                                                  | `4.10`                          |
 | `image.pullPolicy`                                                          | pgAdmin Image pull policy                                                                                          | `IfNotPresent`                  |
 | **PgAdmin**                                                                 |
 | `pgadmin.username`                                                          | pgAdmin admin user                                                                                                 | `pgadmin4@pgadmin.org`          |
@@ -84,7 +84,7 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | `ingress.enabled`                                                           | Enables Ingress                                                                                                    | `false`                         |
 | `ingress.annotations`                                                       | Ingress annotations                                                                                                | `{}`                            |
 | `ingress.path`                                                              | Path to access frontend                                                                                            | `/`                             |
-| `ingress.host`                                                              | Ingress host                                                                                                       | `nil`                           |
+| `ingress.hosts`                                                             | Ingress hosts                                                                                                      | `[]`                            |
 | `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
 | **ReadinessProbe**                                                          |
 | `readinessProbe`                                                            | Rediness Probe settings                                                                                            | `{ "httpGet": { "path": "/", "port": http } "initialDelaySeconds": 60, "periodSeconds": 15, "timeoutSeconds": 10 }`|
