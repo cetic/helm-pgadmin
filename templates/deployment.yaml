@@ -31,6 +31,10 @@ spec:
           - name: PGADMIN_ENABLE_TLS
             value: {{ .Values.pgadmin.tls | quote }}
          {{- end }}
+         {{- if .Values.pgadmin.scriptname }}
+          - name: SCRIPT_NAME
+            value: {{ .Values.pgadmin.scriptname }}
+         {{- end }}
           ports:
           - name: http
             containerPort: 80
