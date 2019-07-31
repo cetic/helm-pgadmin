@@ -31,6 +31,8 @@ spec:
           - name: PGADMIN_ENABLE_TLS
             value: {{ .Values.pgadmin.tls | quote }}
          {{- end }}
+          - name: PGADMIN_PORT
+            value: {{ .Values.service.port | quote }}
          {{- if .Values.pgadmin.scriptname }}
           - name: SCRIPT_NAME
             value: {{ .Values.pgadmin.scriptname }}
