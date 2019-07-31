@@ -3,7 +3,7 @@
 ##
 image:
   repository: dpage/pgadmin4
-  tag: 4.10
+  tag: 4.11
   pullPolicy: IfNotPresent
  
 pgadmin:
@@ -12,6 +12,8 @@ pgadmin:
   ## pgadmin admin password
   password: admin
   tls: false
+  ## See https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html
+  # scriptname: /pgadmin
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
@@ -44,7 +46,8 @@ persistence:
 ##
 service:
   name: pgadmin
-  type: LoadBalancer
+  # type: LoadBalancer
+  type: ClusterIP
   port: 80
   tlsport: 443
   annotations: {}
