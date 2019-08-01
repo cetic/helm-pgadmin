@@ -46,8 +46,7 @@ persistence:
 ##
 service:
   name: pgadmin
-  # type: LoadBalancer
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
   tlsport: 443
   annotations: {}
