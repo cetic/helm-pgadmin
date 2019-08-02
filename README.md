@@ -88,9 +88,9 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | `ingress.hosts`                                                             | Ingress hosts                                                                                                      | `[]`                            |
 | `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
 | **ReadinessProbe**                                                          |
-| `readinessProbe`                                                            | Rediness Probe settings                                                                                            | `{ "httpGet": { "path": "/", "port": http } "initialDelaySeconds": 60, "periodSeconds": 15, "timeoutSeconds": 10 }`|
+| `readinessProbe`                                                            | Rediness Probe settings                                                                                            | `nil` |
 | **LivenessProbe**                                                           |
-| `livenessProbe`                                                             | Liveness Probe settings                                                                                            | `{ "httpGet": { "path": "/", "port": http } "initialDelaySeconds": 60, "periodSeconds": 30, "timeoutSeconds": 10 }`|
+| `livenessProbe`                                                             | Liveness Probe settings                                                                                            | `nil`|
 | **Resources**                                                               |
 | `resources`                                                                 | CPU/Memory resource requests/limits                                                                                | `{}`                            |
 

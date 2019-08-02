@@ -46,8 +46,7 @@ persistence:
 ##
 service:
   name: pgadmin
-  # type: LoadBalancer
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
   tlsport: 443
   annotations: {}
@@ -75,20 +74,20 @@ ingress:
 ## Configure liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
 ##
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
-  initialDelaySeconds: 60
-  periodSeconds: 15
-  timeoutSeconds: 10
-livenessProbe:
-   httpGet:
-     path: /
-     port: http
-   initialDelaySeconds: 60
-   periodSeconds: 30
-   timeoutSeconds: 10
+#readinessProbe:
+#  httpGet:
+#    path: /
+#    port: http
+#  initialDelaySeconds: 60
+#  periodSeconds: 15
+#  timeoutSeconds: 10
+#livenessProbe:
+#   httpGet:
+#     path: /
+#     port: http
+#   initialDelaySeconds: 60
+#   periodSeconds: 30
+#   timeoutSeconds: 10
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
