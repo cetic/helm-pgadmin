@@ -48,7 +48,7 @@ spec:
           - name: pgadmin-data
             mountPath: /var/lib/pgadmin
          {{- if .Values.pgadmin.tls }}
-          - name: tls-cert
+          - namegedit : tls-cert
             mountPath: /certs/server.cert
             subPath: server.cert
           - name: tls-private-key
@@ -65,7 +65,7 @@ spec:
         - name: pgadmin-data
          {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ template "pgadmin.fullname" . }}
+            claimName: {{ .Values.persistence.existingClaim | default (include "pgadmin.fullname" .) }}
          {{- else }}
           emptyDir: {}
          {{- end }}
