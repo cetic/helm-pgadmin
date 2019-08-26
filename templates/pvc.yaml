@@ -5,7 +5,7 @@ metadata:
   name: {{ template "pgadmin.fullname" . }}
   labels:
     app: {{ template "pgadmin.fullname" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    chart: {{ template "pgadmin.chart" . }}
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
