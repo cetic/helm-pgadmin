@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -48,13 +49,18 @@ spec:
           - name: pgadmin-data
             mountPath: /var/lib/pgadmin
          {{- if .Values.pgadmin.tls }}
-          - namegedit : tls-cert
+          - name: tls-cert
             mountPath: /certs/server.cert
             subPath: server.cert
           - name: tls-private-key
             mountPath: /certs/server.key
             subPath: server.key
          {{- end }}
+         {{- if .Values.servers.enabled }}
+          - name: servers-config
+            mountPath: /pgadmin4/servers.json
+            subPath: servers.json
+         {{- end}}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           livenessProbe:
@@ -82,6 +88,14 @@ spec:
             items:
               - key: server.cert
                 path: server.cert
+         {{- end }}
+         {{- if .Values.servers.enabled }}
+        - name: servers-config
+          configMap:
+            name: {{ template "pgadmin.fullname" . }}
+            items:
+            - key: servers.json
+              path: servers.json
          {{- end }}
     {{- if .Values.nodeSelector }}
       nodeSelector:

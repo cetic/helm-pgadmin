@@ -1,0 +1,15 @@
+---
+{{- if .Values.servers.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "pgadmin.fullname" . }}
+  labels:
+    app: {{ template "pgadmin.name" . }}
+    chart: {{ template "pgadmin.chart" . }}
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
+data:
+  servers.json: |-
+{{ toJson .Values.servers.config | indent 4 }}
+{{- end }}

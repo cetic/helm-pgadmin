@@ -87,10 +87,13 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | `ingress.path`                                                              | Path to access frontend                                                                                            | `/`                             |
 | `ingress.hosts`                                                             | Ingress hosts                                                                                                      | `[]`                            |
 | `ingress.tls`                                                               | Ingress TLS configuration                                                                                          | `[]`                            |
+| **Servers**                                                                 |
+| `servers.enabled`                                                           | Enable the servers configuration. If enabled, server definitions found in `servers.config` will be loaded at launch time.| `true`                    |
+| `servers.config`                                                            | Server definitions                                                                                                 | `See the values.yaml`           |
 | **ReadinessProbe**                                                          |
-| `readinessProbe`                                                            | Rediness Probe settings                                                                                            | `nil` |
+| `readinessProbe`                                                            | Rediness Probe settings                                                                                            | `nil`                           |
 | **LivenessProbe**                                                           |
-| `livenessProbe`                                                             | Liveness Probe settings                                                                                            | `nil`|
+| `livenessProbe`                                                             | Liveness Probe settings                                                                                            | `nil`                           |
 | **Resources**                                                               |
 | `resources`                                                                 | CPU/Memory resource requests/limits                                                                                | `{}`                            |
 
