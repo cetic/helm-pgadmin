@@ -3,7 +3,7 @@
 ##
 image:
   repository: dpage/pgadmin4
-  tag: 4.11
+  tag: 4.12
   pullPolicy: IfNotPresent
  
 pgadmin:
@@ -70,6 +70,21 @@ ingress:
   path: /
   hosts: []
   tls: []
+
+## Configure servers.json: https://www.pgadmin.org/docs/pgadmin4/latest/import_export_servers.html
+##
+servers:
+  enabled: false
+  config:
+    Servers:
+      1:
+        Name: "Test"
+        Group: "Server Group 1"
+        Port: 5432
+        Username: "postgres"
+        Host: "postgres"
+        SSLMode: "prefer"
+        MaintenanceDB: "postgres"
 
 ## Configure liveness and readiness probes
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
