@@ -38,6 +38,10 @@ spec:
           - name: SCRIPT_NAME
             value: {{ .Values.pgadmin.scriptname }}
          {{- end }}
+         {{- range .Values.pgadmin.config }}
+          - name: {{ .name | upper }}
+            value: {{ .value | quote }}
+         {{- end }}
           ports:
           - name: http
             containerPort: 80

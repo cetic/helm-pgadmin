@@ -15,6 +15,13 @@ pgadmin:
   ## See https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html
   # scriptname: /pgadmin
 
+  ## pgadmin config, Any custom environment variabls. Settings in config.py can be overriden with an environment variable using the prefix: PGADMIN_CONFIG_
+  ## eg turn off enhanced cookie protection for default AKS, loadbalancer installation
+  #config:
+  #  - name: "PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION"
+  #    value: "False"
+  
+
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
