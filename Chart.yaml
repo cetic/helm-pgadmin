@@ -1,6 +1,6 @@
 name: pgadmin
 version: 0.1.10
-appVersion: 4.12.0
+appVersion: 4.13.0
 description: pgAdmin is a web based administration tool for the PostgreSQL database.
 keywords:
   - pgadmin
