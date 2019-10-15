@@ -61,7 +61,7 @@ The following table lists the configurable parameters of the pgAdmin chart and t
 | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------| ------------------------------- |
 | **Image**                                                                   |
 | `image.repository`                                                          | pgAdmin Image name                                                                                                 | `dpage/pgadmin4`                |
-| `image.tag`                                                                 | pgAdmin Image tag                                                                                                  | `4.11`                          |
+| `image.tag`                                                                 | pgAdmin Image tag                                                                                                  | `4.13`                          |
 | `image.pullPolicy`                                                          | pgAdmin Image pull policy                                                                                          | `IfNotPresent`                  |
 | **PgAdmin**                                                                 |
 | `pgadmin.username`                                                          | pgAdmin admin user                                                                                                 | `pgadmin4@pgadmin.org`          |

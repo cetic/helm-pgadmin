@@ -3,7 +3,7 @@
 ##
 image:
   repository: dpage/pgadmin4
-  tag: 4.12
+  tag: 4.13
   pullPolicy: IfNotPresent
  
 pgadmin:
@@ -21,7 +21,6 @@ pgadmin:
   #  - name: "PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION"
   #    value: "False"
   
-
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##

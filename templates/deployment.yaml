@@ -12,8 +12,8 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ template "pgadmin.fullname" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app: {{ template "pgadmin.name" . }}
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
