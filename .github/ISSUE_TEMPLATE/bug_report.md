@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: '[name of the chart e.g. cetic/chart] issue title'
+title: '[cetic/pgadmin] issue title'
 labels: ''
 assignees: ''
 
