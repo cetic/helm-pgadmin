@@ -39,3 +39,14 @@ Create chart name and version as used by the chart label.
 {{- define "pgadmin.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{/*
+Create the name for the admin password secret.
+*/}}
+{{- define "pgadmin.passwordSecret" -}}
+{{- if .Values.pgadmin.existingPasswordSecret -}}
+  {{- .Values.pgadmin.existingPasswordSecret -}}
+{{- else -}}
+  {{- template "pgadmin.fullname" . }}-password
+{{- end -}}
+{{- end -}}

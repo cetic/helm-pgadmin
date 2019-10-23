@@ -30,7 +30,7 @@ spec:
           - name: PGADMIN_DEFAULT_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ template "pgadmin.fullname" . }}
+                name: {{ template "pgadmin.passwordSecret" . }}
                 key: pgadmin-password
          {{- if .Values.pgadmin.tls }}
           - name: PGADMIN_ENABLE_TLS
@@ -86,13 +86,13 @@ spec:
          {{- if .Values.pgadmin.tls }}
         - name: tls-private-key
           secret:
-            secretName: {{ template "pgadmin.fullname" . }}
+            secretName: {{ template "pgadmin.fullname" . }}-tls
             items:
               - key: server.key
                 path: server.key
         - name: tls-cert
           secret:
-            secretName: {{ template "pgadmin.fullname" . }}
+            secretName: {{ template "pgadmin.fullname" . }}-tls
             items:
               - key: server.cert
                 path: server.cert
