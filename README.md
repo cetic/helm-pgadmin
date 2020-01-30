@@ -1,3 +1,5 @@
+:warning: As explained in Issue [#18](https://github.com/cetic/helm-pgadmin/issues/18), this repository is now archived. Please use https://github.com/helm/charts/tree/master/stable/pgadmin instead. Thanks you all for the contributions made to this Helm Chart! :warning:
+
 # Helm Chart for pgAdmin
 
 [![CircleCI](https://circleci.com/gh/cetic/helm-pgadmin.svg?style=svg)](https://circleci.com/gh/cetic/helm-pgadmin/tree/master) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![version](https://img.shields.io/github/tag/cetic/helm-pgadmin.svg?label=release)
